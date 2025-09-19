@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Sand Timers for Sanity - Momentum Hacks</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
+        
+        <!-- Google Analytics (GA4) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1D7ME7JD5"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', 'G-F1D7ME7JD5');
+        </script>
+
+        <meta name="description" content="Momentum beats motivation. This book gives indie hackers a repeatable playbook to ship in short cycles, gather fast feedback, and build steady progress without burnout. Through simple daily moves, weekly rituals, and lightweight metrics, you&#x27;ll learn how to slice work, log proof, and keep momentum alive—even on low-energy days.
+">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/indie10k.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Momentum Hacks</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="sand-timers-for-sanity"><a class="header" href="#sand-timers-for-sanity">Sand Timers for Sanity</a></h1>
+<h2 id="the-chaos-of-lost-time"><a class="header" href="#the-chaos-of-lost-time">The Chaos of Lost Time</a></h2>
+<p>You sit down with good intentions, but suddenly the hours have slipped through your fingers like sand. Panic rises as deadlines loom, yet the clock remains silent, indifferent to your struggle. What if you had a way to reclaim those lost moments?</p>
+<h2 id="opening-scene"><a class="header" href="#opening-scene">Opening Scene</a></h2>
+<p>You promise yourself “just a few more minutes” and watch an hour evaporate. A clock would have saved the day.</p>
+<h2 id="why-timeboxing-matters"><a class="header" href="#why-timeboxing-matters">Why Timeboxing Matters</a></h2>
+<p>People overestimate discipline and underestimate clocks. A timer tells you when to start, when to stop, and what to do if you are not done. Timeboxing keeps scope honest and creates a game you can win today.</p>
+<h2 id="default-boxes"><a class="header" href="#default-boxes">Default Boxes</a></h2>
+<p>Set your default boxes to create a consistent rhythm your brain can recognize:</p>
+<ul>
+<li>Ten minutes for listing, drafting, or a handful of DMs.</li>
+<li>Twenty-five to forty minutes for slicing and shipping.</li>
+<li>Two hours for a micro‑sprint when you have a clear runway and want to produce a visible feature.</li>
+</ul>
+<p>The exact numbers matter less than the habit of consistency.</p>
+<h2 id="start-small"><a class="header" href="#start-small">Start Small</a></h2>
+<p>Begin with a short box to break inertia. Ten minutes of motion often unlocks a second box without negotiation.</p>
+<ul>
+<li>If you only have ten minutes, pick the smallest outcome and finish it.</li>
+<li>If you have more time, chain a second box with a short break.</li>
+<li>Never chain more than two boxes without stepping away.</li>
+</ul>
+<h2 id="scope-and-the-clock"><a class="header" href="#scope-and-the-clock">Scope and the Clock</a></h2>
+<p>Timeboxes don’t just cap effort; they drive scope. When the clock is visible, you naturally cut.</p>
+<ul>
+<li>If the timer hits and you are not done, halve the scope and run one more box.</li>
+<li>If you still aren’t done, you picked a bundle, not a slice.</li>
+</ul>
+<h2 id="ending-on-time"><a class="header" href="#ending-on-time">Ending on Time</a></h2>
+<p>Ending on time matters. It trains you to believe you can finish and protects future sessions from resentment.</p>
+<ul>
+<li>When the bell rings, stop.</li>
+<li>Create an artifact.</li>
+<li>Send an ask if you can.</li>
+<li>If you need another pass, schedule it for tomorrow.</li>
+</ul>
+<p>Overrunning turns a light system into a burden.</p>
+<h2 id="fit-boxes-to-energy"><a class="header" href="#fit-boxes-to-energy">Fit Boxes to Energy</a></h2>
+<p>Run boxes by your energy level:</p>
+<ul>
+<li>Couch mode? Ten minutes to collect screenshots or tweak a sentence.</li>
+<li>Feeling sharp? Forty minutes to ship.</li>
+<li>Adjust the box to fit the day and the slice to fit the box.</li>
+</ul>
+<p>Let the timer define the boundary; your focus will fill the space.</p>
+<h2 id="pairing-with-other-tools"><a class="header" href="#pairing-with-other-tools">Pairing with Other Tools</a></h2>
+<p>Combine timeboxing with priming and the red button:</p>
+<ul>
+<li>Prime before you start so the first two minutes are frictionless.</li>
+<li>If you drift mid‑box, hit the red button and aim for a rough artifact.</li>
+</ul>
+<p>The goal isn’t to maximize minutes but to end with proof and an ask inside the box you set.</p>
+<h2 id="microsprints"><a class="header" href="#microsprints">Micro‑Sprints</a></h2>
+<p>Two hours can be useful but treat it as a micro‑sprint with a visible endpoint.</p>
+<ul>
+<li>Break the two hours into two or three segments with mini‑goals.</li>
+<li>If attention slips, drop to a smaller box rather than pushing through fog.</li>
+</ul>
+<h2 id="team-use"><a class="header" href="#team-use">Team Use</a></h2>
+<p>Timeboxing scales to teams:</p>
+<ul>
+<li>A shared “forty‑five minute ship” block pulls a group into focus without a meeting.</li>
+<li>Everyone posts an artifact at the end.</li>
+<li>This ritual makes progress tangible and replaces status talk with evidence.</li>
+</ul>
+<h2 id="relief-not-pressure"><a class="header" href="#relief-not-pressure">Relief, Not Pressure</a></h2>
+<p>Timers are not about pressure. They are about relief.</p>
+<ul>
+<li>You give yourself permission to stop.</li>
+<li>You give your work a container.</li>
+<li>Inside that container, you move. Outside, you rest.</li>
+</ul>
+<p>This rhythm keeps momentum smooth.</p>
+<h2 id="whats-next"><a class="header" href="#whats-next">What’s Next</a></h2>
+<p>Timers clear the lane for focused work. Next, we’ll add guardrails to protect that focus when tabs, notifications, and interruptions try to steal your session—helping you defend your flow and keep momentum unbroken.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="07_red-button.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="09_context-guardrails.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="07_red-button.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="09_context-guardrails.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/indie10k.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
