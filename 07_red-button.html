@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Ship Ugly, Stay Alive - Momentum Hacks</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
+        
+        <!-- Google Analytics (GA4) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1D7ME7JD5"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', 'G-F1D7ME7JD5');
+        </script>
+
+        <meta name="description" content="Momentum beats motivation. This book gives indie hackers a repeatable playbook to ship in short cycles, gather fast feedback, and build steady progress without burnout. Through simple daily moves, weekly rituals, and lightweight metrics, you&#x27;ll learn how to slice work, log proof, and keep momentum alive—even on low-energy days.
+">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/indie10k.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Momentum Hacks</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ship-ugly-stay-alive"><a class="header" href="#ship-ugly-stay-alive">Ship Ugly, Stay Alive</a></h1>
+<p>You’re stuck. Polishing a button label for twenty minutes while the clock ticks down. Frustration builds. Perfection feels like a trap. You want to ship, but fear holds you back. What if it’s not good enough? What if it falls flat? The red button is your escape hatch.</p>
+<h2 id="opening-scene"><a class="header" href="#opening-scene">Opening Scene</a></h2>
+<p>You catch yourself polishing a button label for twenty minutes. The clock says you have five left. Most days you’d surrender the session. Not today. You hit the red button.</p>
+<h2 id="why-this-chapter"><a class="header" href="#why-this-chapter">Why This Chapter</a></h2>
+<p>When you drift, you need a way to end the session with a win. The red button is that way: a force-finish protocol you trigger as soon as you notice stall patterns—too many tabs, a task that keeps growing, a sense that you need “just five more minutes.” You don’t need more time. You need to ship a smaller, rougher thing now.</p>
+<h2 id="the-protocol"><a class="header" href="#the-protocol">The Protocol</a></h2>
+<ul>
+<li>Set a 15-minute timer.</li>
+<li>Cut scope in half; then cut it in half again.</li>
+<li>Remove everything not needed to demo.</li>
+<li>Produce one artifact: a link, clip, or screenshot.</li>
+<li>When the timer ends, stop.</li>
+<li>Send the artifact to one person with one clear ask.</li>
+</ul>
+<h2 id="why-it-works"><a class="header" href="#why-it-works">Why It Works</a></h2>
+<p>The red button flips the goal from perfection to proof. You aim at a human who can react, not an ideal you can never reach. The artifact may be ugly. That is fine. You are not shipping to the world. You are shipping to a person who can help you see what matters next.</p>
+<h2 id="guardrails"><a class="header" href="#guardrails">Guardrails</a></h2>
+<ul>
+<li>No refactors.</li>
+<li>No research.</li>
+<li>No “quick cleanup.”</li>
+<li>Park those urges in a note.</li>
+<li>Done means a human can see it.</li>
+<li>Done is not “the code is cleaner” or “I learned something interesting.”</li>
+<li>Done is a URL, file, or image with a sentence that invites a response.</li>
+</ul>
+<h2 id="common-temptations"><a class="header" href="#common-temptations">Common Temptations</a></h2>
+<p>You will want to negotiate: five more minutes, one more small addition. Don’t. The point is to regain momentum, not to finish everything. If you need another pass, schedule another box tomorrow. For now, get the artifact out of your editor and into someone else’s world.</p>
+<h2 id="good-asks"><a class="header" href="#good-asks">Good Asks</a></h2>
+<p>Pair the red button with small, concrete questions like:</p>
+<ul>
+<li>“Can you try this and tell me where you paused?”</li>
+<li>“Does this screen explain the next step in under ten seconds?”</li>
+<li>“If this was the first thing you saw, would you click?”</li>
+</ul>
+<p>Make the path to reply easy:</p>
+<ul>
+<li>An emoji works.</li>
+<li>A yes or no works.</li>
+<li>A one-line comment works.</li>
+</ul>
+<h2 id="use-cases"><a class="header" href="#use-cases">Use Cases</a></h2>
+<p>Use it proactively at the end of a session. If you have five minutes left and haven’t shipped, hit the button. Cut scope, create the artifact, and send. The small win beats the perfect draft that never leaves your machine.</p>
+<h2 id="teams-and-rituals"><a class="header" href="#teams-and-rituals">Teams and Rituals</a></h2>
+<p>Teams can use the red button to end stand-ups with proof:</p>
+<ul>
+<li>“Before we close, everyone posts one artifact from today.”</li>
+</ul>
+<p>This ritual nudges people to aim for evidence over busyness. Over time, it builds a culture of small ships and fast asks.</p>
+<h2 id="whats-next"><a class="header" href="#whats-next">What’s Next</a></h2>
+<p>Use the red button sparingly but decisively—it’s a rescue, not a lifestyle. Next, we’ll explore how to use clocks to keep scope honest before you need a rescue. Mastering time management helps you avoid the red button altogether and ship more confidently from the start.</p>
+<p>Ugly ships beat beautiful drafts that never leave. Hit the red button, ship the slice, and live to build again tomorrow.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="06_activation-priming.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="08_timeboxing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="06_activation-priming.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="08_timeboxing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/indie10k.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

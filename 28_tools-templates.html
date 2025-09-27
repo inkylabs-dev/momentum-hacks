@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Minimal Toolchain, Max Push - Momentum Hacks</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
+        
+        <!-- Google Analytics (GA4) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1D7ME7JD5"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', 'G-F1D7ME7JD5');
+        </script>
+
+        <meta name="description" content="Momentum beats motivation. This book gives indie hackers a repeatable playbook to ship in short cycles, gather fast feedback, and build steady progress without burnout. Through simple daily moves, weekly rituals, and lightweight metrics, you&#x27;ll learn how to slice work, log proof, and keep momentum alive—even on low-energy days.
+">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/indie10k.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Momentum Hacks</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="minimal-toolchain-max-push"><a class="header" href="#minimal-toolchain-max-push">Minimal Toolchain, Max Push</a></h1>
+<p>Overcomplicated tool stacks are energy sinks. Endless apps, countless clicks, and buried templates turn momentum into frustration. The more you juggle, the less you ship. Strip the noise. Focus on what moves you forward.</p>
+<h2 id="the-minimal-stack"><a class="header" href="#the-minimal-stack">The Minimal Stack</a></h2>
+<p>Tools should remove friction, not add it. The minimal stack for momentum is boring on purpose: a timer, a notes doc, and a way to capture proof. Everything else is optional. The more clicks between you and a ship, the less you will ship. Keep the stack light and the templates handy. If you want to start fast, copy these and begin:</p>
+<h3 id="daily-proof"><a class="header" href="#daily-proof">Daily Proof</a></h3>
+<p>Use this single entry per session. Keep it short and visible.</p>
+<pre><code>Date: YYYY‑MM‑DD
+
+Artifact: &lt;what changed&gt;
+
+Link/Screenshot: &lt;url or path&gt;
+
+Why It Matters: &lt;one sentence&gt;
+
+Ask Sent?: Y/N — To: &lt;name/channel&gt; — Question: &lt;one line&gt;
+
+First Reply Time: &lt;e.g., 6h&gt; — Latency: &lt;hours&gt;
+
+Next Move (staged): &lt;first line you’ll type tomorrow&gt;
+
+</code></pre>
+<p>Example</p>
+<pre><code>Date: 2025‑09‑16
+
+Artifact: Added welcome line + primary CTA on onboarding screen
+
+Link/Screenshot: https://staging.example.com/onboarding; clip: loom.com/…
+
+Why It Matters: clarifies next step for first‑time users
+
+Ask Sent?: Y — To: Ana (DM) — Question: “Does this welcome make sense in under 10 seconds?”
+
+First Reply Time: 6h — Latency: 6
+
+Next Move (staged): Replace button copy with user phrasing
+</code></pre>
+<h3 id="ask3-outreach-script"><a class="header" href="#ask3-outreach-script">Ask3 Outreach Script</a></h3>
+<p>Three messages, one clear question, easy reply.</p>
+<pre><code># Context
+
+I’m working on &lt;product/feature&gt; for &lt;audience&gt;. I shipped a tiny slice today and want to sanity‑check one thing.
+
+# Script (DM or Email)
+
+Hi &lt;name&gt; — quick one?
+
+Could you &lt;action: “try this first screen” / “scan this headline” / “watch this 20s clip”&gt; and tell me &lt;one question: “where you paused” / “if the promise is clear” / “if you’d click”&gt;?
+
+Link: &lt;url&gt;
+
+A one‑line reply (even 👍/👎) is perfect. Thank you!
+
+# Variants
+
+- Comprehension: “Does this make sense in under 10 seconds?”
+- Friction: “Where did you hesitate?”
+- Value: “If this solved &lt;pain&gt;, would $&lt;price&gt;/mo feel fair?”
+
+# Log (copy into proof entry)
+
+- Sent: &lt;date/time&gt; — To: &lt;name/channel&gt; — Q: &lt;question&gt;
+- First Reply: &lt;time&gt; — Latency: &lt;hours&gt;
+</code></pre>
+<h3 id="onepage-prd"><a class="header" href="#onepage-prd">One‑Page PRD</a></h3>
+<pre><code># One‑Page PRD
+
+## Problem
+
+Describe the user’s pain in their words (1–3 sentences).
+
+## Audience
+
+Who is this for (be specific) and where you can reach them.
+
+## Outcome
+
+The single action you want (e.g., “first‑run success,” “reply,” “trial started”).
+
+## Scope (Thin Slice)
+
+The smallest version that teaches you something true (one screen, one task, one CTA).
+
+## Risks / Unknowns
+
+Top 2–3 things you’re testing (e.g., comprehension, friction, value).
+
+## Measure
+
+One signal you’ll track this week (proof day, finish rate, latency, or a specific event).
+
+## Demo Plan
+
+How you’ll show it in 20–30 seconds (clip/screenshot), plus the ask you’ll make.
+
+## Notes
+
+Links, references, quotes from users that shape copy or flow.
+
+</code></pre>
+<h3 id="weekly-note"><a class="header" href="#weekly-note">Weekly Note</a></h3>
+<pre><code># Week: YYYY‑MM‑DD → YYYY‑MM‑DD
+
+## Scoreboard
+
+- Proof Days: &lt;x/7&gt;
+- Finish Rate: &lt;slices/sessions = %&gt;
+- Avg Feedback Latency: &lt;hours&gt;
+
+## Lever + Theme
+
+- Lever: &lt;Starts / Finish Rate / Feedback Speed / Evidence Strength&gt;
+- Theme: &lt;Discovery / Activation / Revenue / Retention&gt;
+- Stack (2–3 moves): &lt;e.g., Slice‑Box‑Button&gt;
+
+## Commitments
+
+- Ask: &lt;specific ask you will make this week&gt;
+- Demo: &lt;day/time + audience&gt;
+- Monday Staged: &lt;link to file + “Ship:” line&gt;
+
+## Friday Highlight (fill at end of week)
+
+- Artifact 1: &lt;what + link&gt; — Why it mattered
+- Artifact 2: &lt;what + link&gt; — Why it mattered
+- Next: &lt;one change you’ll try next week&gt;
+</code></pre>
+<h2 id="timers-and-proof-capture"><a class="header" href="#timers-and-proof-capture">Timers and Proof Capture</a></h2>
+<p>A timer can be an app or a kitchen timer. You need start, stop, and a chime you cannot ignore. A notes doc or sheet holds your three numbers, your weekly note, and your museum of proof. Keep it in a place you can open in one click. A screenshot and screen‑record tool captures before/after and short clips. Set hotkeys you will remember.</p>
+<h2 id="templates-that-speed-you-up"><a class="header" href="#templates-that-speed-you-up">Templates That Speed You Up</a></h2>
+<p>Templates save time on decisions. The Daily Proof entry (../templates/daily-proof.md) gives you a one‑minute close. The Ask3 script (../templates/ask3.md) has blanks you can fill and send. The One‑Page PRD (../templates/one-page-prd.md) clarifies a slice before you build. The Weekly Note (../templates/weekly-note.md) sets the Sunday scoreboard, lever, theme, and demo.</p>
+<h2 id="do-you-need-project-management"><a class="header" href="#do-you-need-project-management">Do You Need Project Management?</a></h2>
+<p>You do not need project management software to run this system. If you already have one, use it to store slices written as outcomes and to tag discovery, activation, and revenue. If you don’t, a single doc works. The proof is the progress. The doc is the map.</p>
+<h2 id="add-tools-only-for-bottlenecks"><a class="header" href="#add-tools-only-for-bottlenecks">Add Tools Only for Bottlenecks</a></h2>
+<p>When you add a tool, add it because a bottleneck hurts. If you spend fifteen minutes every day stitching screenshots into a post, create a tiny script or a shortcut that does it in two. If you lose track of asks, set up a canned email template and a label to collect replies. Advanced automations can wait — focus first on tools that keep reflection visible and habits intact.</p>
+<h2 id="keep-tools-visible"><a class="header" href="#keep-tools-visible">Keep Tools Visible</a></h2>
+<p>Keep the stack visible. Put the proof log in your dock. Pin the outreach template to your clipboard manager. Leave the PRD template where you can duplicate it without thinking. Friction hides in clicks and searches. Expose what you need and you will use it.</p>
+<h2 id="match-your-style"><a class="header" href="#match-your-style">Match Your Style</a></h2>
+<p>Tools should fit your style. If you love paper, a notebook with a weekly page for numbers and a daily line for proof works. If you love spreadsheets, a sheet with formulas for finish rate and average latency works. The method is the same. The best tool is the one you will open when you are tired.</p>
+<p>With your stack lean and your tools tuned, you’re ready to build momentum that lasts. Next, we’ll explore how to sustain cadence and unlock advanced strategies to keep the push going strong.</p>
+<h2 id="indie10k-shortcut"><a class="header" href="#indie10k-shortcut">Indie10k Shortcut</a></h2>
+<p>All the templates in this chapter are designed to be copied and used independently—no dependencies, just fast starts. If you prefer to keep full control and zero reliance on outside tools, you can copy these templates into your own docs, sheets, or notes and begin immediately.</p>
+<p>However, Indie10k (https://indie10k.com) also provides structured path to track all these records, reducing setup friction and making it even easier to get started.</p>
+<p>You can choose either approach: use the manual templates for a fully independent process, or let Indie10k handle the setup so you can focus on shipping. Both paths are valid—the best system is the one you’ll actually use.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="27_collab-mode.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="29_checklists.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="27_collab-mode.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="29_checklists.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/indie10k.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
