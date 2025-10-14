@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Make It Reflex, Not Effort - Momentum Hacks</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
+        
+        <!-- Google Analytics (GA4) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1D7ME7JD5"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', 'G-F1D7ME7JD5');
+        </script>
+
+        <meta name="description" content="Momentum beats motivation. This book gives indie hackers a repeatable playbook to ship in short cycles, gather fast feedback, and build steady progress without burnout. Through simple daily moves, weekly rituals, and lightweight metrics, you&#x27;ll learn how to slice work, log proof, and keep momentum alive—even on low-energy days.
+">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/indie10k.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Momentum Hacks</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="make-it-reflex-not-effort"><a class="header" href="#make-it-reflex-not-effort">Make It Reflex, Not Effort</a></h1>
+<p>Motivation feels great—until it vanishes. Relying on willpower alone is like chasing the wind. To truly keep momentum, you need habits that run beneath the surface, automatic and unshakable.</p>
+<h2 id="the-power-of-habits"><a class="header" href="#the-power-of-habits">The Power of Habits</a></h2>
+<p>Motivation comes and goes. Habits stay. The way to keep momentum through seasons is to turn your hacks into reflexes. You do that by designing cues, shrinking first moves, and tying behavior to a story you believe about yourself.</p>
+<h2 id="the-simple-loop"><a class="header" href="#the-simple-loop">The Simple Loop</a></h2>
+<p>Use the simplest loop: cue, action, evidence, reward. The cue is the moment that begins your session. The action is the smallest slice. The evidence is the artifact you log. The reward is the feeling of closure and the visible streak you maintain. Each lap reinforces the next. The faster you travel the loop, the less friction you feel.</p>
+<h2 id="chain-new-actions"><a class="header" href="#chain-new-actions">Chain New Actions</a></h2>
+<p>Chain new actions to routines you already keep. The chain matters more than the time. Your body learns the order.</p>
+<p>For example:</p>
+<ul>
+<li>If you make coffee every morning, put your laptop where you pour. When you set the mug down, open the exact file.</li>
+<li>If you walk after lunch, use the first five minutes back at the desk to run a ten-minute box.</li>
+<li>If you check a community at 4 p.m., pair that scroll with an “ask 3” micro-session.</li>
+</ul>
+<p>Advanced variations on habit stacking exist, but the key is to anchor new behaviors to existing routines.</p>
+<h2 id="keep-the-first-step-tiny"><a class="header" href="#keep-the-first-step-tiny">Keep the First Step Tiny</a></h2>
+<p>Keep the first step tiny—two minutes or less. Tiny steps feel safe to begin. Once you begin, you usually continue. If you don’t, you still log a pixel and preserve identity: “I ship daily.”</p>
+<p>Examples of tiny first steps:</p>
+<ul>
+<li>Write the first sentence.</li>
+<li>Move the button.</li>
+<li>Paste the headline.</li>
+<li>Start the recording and narrate one line.</li>
+</ul>
+<h2 id="identity-as-fuel"><a class="header" href="#identity-as-fuel">Identity as Fuel</a></h2>
+<p>Identity powers habits. Call yourself what you do. These are not slogans. They are instructions to your future self. When a day goes sideways, identity whispers the minimum you will still do.</p>
+<p>Try these identity anchors:</p>
+<ul>
+<li>“I am a builder who ships small.”</li>
+<li>“I am a sharer who posts proof.”</li>
+<li>“I am an asker who talks to users every week.”</li>
+</ul>
+<h2 id="visible-streaks"><a class="header" href="#visible-streaks">Visible Streaks</a></h2>
+<p>Use visible streaks to reduce decision cost. A simple tracker with checkmarks for proof and asks turns your week into a game. The goal is not a perfect run. The goal is to avoid zero days. When you miss, you do not start over at one. You start again today. The habit is showing up, not maintaining the number.</p>
+<h2 id="protect-the-environment"><a class="header" href="#protect-the-environment">Protect the Environment</a></h2>
+<p>Protect habits with your environment. Remove friction and temptations. Keep your tools one click away. Close tabs you do not need. Put your “later” note within reach so you do not chase thoughts. Leave tomorrow’s first move in the file so the cue leads to action without thought.</p>
+<h2 id="expect-slumps"><a class="header" href="#expect-slumps">Expect Slumps</a></h2>
+<p>Expect slumps. Plan a recovery. When you miss a week, run a momentum rescue. Archive the stale task. Write a fresh three-item list. Hit the red button for a rough ship. Log the pixel and set one cue for tomorrow. Recovery is a skill you can practice. The faster you recover, the less damage the slump does.</p>
+<p>Habits will make you boring. That is the point. Boring keeps you building. Reflex beats resolve. Mastering these basics sets the stage for sustaining momentum and resilience over the long haul—topics we’ll explore next.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="25_stack-design.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="27_collab-mode.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="25_stack-design.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="27_collab-mode.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/indie10k.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Three Numbers That Tell the Truth - Momentum Hacks</title>
+
+
+        <!-- Custom HTML head -->
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico">
+        <link rel="shortcut icon" href="/favicon.ico">
+        
+        <!-- Google Analytics (GA4) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1D7ME7JD5"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);} 
+          gtag('js', new Date());
+          gtag('config', 'G-F1D7ME7JD5');
+        </script>
+
+        <meta name="description" content="Momentum beats motivation. This book gives indie hackers a repeatable playbook to ship in short cycles, gather fast feedback, and build steady progress without burnout. Through simple daily moves, weekly rituals, and lightweight metrics, you&#x27;ll learn how to slice work, log proof, and keep momentum alive—even on low-energy days.
+">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/indie10k.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Momentum Hacks</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="three-numbers-that-tell-the-truth"><a class="header" href="#three-numbers-that-tell-the-truth">Three Numbers That Tell the Truth</a></h1>
+<h2 id="the-moment-that-changes-everything"><a class="header" href="#the-moment-that-changes-everything">The Moment That Changes Everything</a></h2>
+<p>You stare at a dashboard packed with charts but feel stuck—none tell you what to do next. Then you spot three simple numbers that cut through the noise: Did you produce proof? Did you finish what you started? How fast did anyone respond? These three guide your next move, turning overwhelm into clear focus.</p>
+<h2 id="opening-scene"><a class="header" href="#opening-scene">Opening Scene</a></h2>
+<p>You open an analytics dashboard and see a forest of charts. None tell you what to do today. Three small numbers will: did you produce proof, did you finish what you started, and how fast did anyone respond? That’s enough to steer a week.</p>
+<h2 id="why-these-numbers"><a class="header" href="#why-these-numbers">Why These Numbers</a></h2>
+<h3 id="cutting-through-complexity"><a class="header" href="#cutting-through-complexity">Cutting Through Complexity</a></h3>
+<p>Dashboards can bury the signal you need. These three numbers map directly to your core levers—starts, finishes, feedback—and take under a minute to record. They reveal stalls quickly and suggest your next move without spreadsheets or setup.</p>
+<h2 id="daily-proof"><a class="header" href="#daily-proof">Daily Proof</a></h2>
+<h3 id="what-counts-as-proof"><a class="header" href="#what-counts-as-proof">What Counts as Proof?</a></h3>
+<p>Proof is simple: did you ship something visible today? A link, demo clip, user reply, or signup counts. Planning and invisible cleanup don’t.</p>
+<h3 id="your-daily-habit"><a class="header" href="#your-daily-habit">Your Daily Habit</a></h3>
+<p>Log one line per day with date, artifact, link, and a brief note. Aim for four to six proof days per week if you work most days. Small, real progress beats polished but private.</p>
+<h2 id="finish-rate"><a class="header" href="#finish-rate">Finish Rate</a></h2>
+<h3 id="measuring-progress"><a class="header" href="#measuring-progress">Measuring Progress</a></h3>
+<p>Finish Rate is slices shipped divided by sessions. Think one screen, one task, one call to action. Track daily; compute the ratio weekly. Healthy rates fall between 60-80%. Lower means your slices are too big.</p>
+<h3 id="keep-it-small"><a class="header" href="#keep-it-small">Keep It Small</a></h3>
+<p>Cut scope until you can ship in under 40 minutes. This keeps momentum flowing.</p>
+<h2 id="feedback-latency"><a class="header" href="#feedback-latency">Feedback Latency</a></h2>
+<h3 id="why-speed-matters"><a class="header" href="#why-speed-matters">Why Speed Matters</a></h3>
+<p>Feedback Latency measures hours from ship to first human response. Under a day is ideal; under three is acceptable.</p>
+<h3 id="how-to-improve"><a class="header" href="#how-to-improve">How to Improve</a></h3>
+<p>Ask one person directly in a channel they watch and make replying easy. If feedback takes a week, change your approach.</p>
+<h2 id="tiny-tracker-in-practice"><a class="header" href="#tiny-tracker-in-practice">Tiny Tracker in Practice</a></h2>
+<ul>
+<li>One row per day: date, proof (Y/N + note), slices, sessions, finish rate, ask sent (Y/N), first reply, latency.</li>
+<li>Add a weekly summary row.</li>
+<li>The goal: quick updates that keep you honest and focused.</li>
+</ul>
+<h2 id="reading-the-story-quick-checks"><a class="header" href="#reading-the-story-quick-checks">Reading The Story: Quick Checks</a></h2>
+<ul>
+<li>Low proof days? Focus on starting smaller, priming your work.</li>
+<li>Low finish rate? Slice thinner and set hard stops.</li>
+<li>High latency? Make asks direct and improve channels.</li>
+<li>Combine signals to diagnose deeper issues and adjust.</li>
+</ul>
+<h2 id="whats-next"><a class="header" href="#whats-next">What’s Next</a></h2>
+<p>These three numbers become your compass, guiding small ships, sharper slices, and clearer asks. Next, we’ll connect these metrics to the TenK loops, giving your work a simple, powerful spine.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="02_momentum-model.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="04_map-to-tenk6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="02_momentum-model.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="04_map-to-tenk6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/indie10k.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
